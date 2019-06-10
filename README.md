@@ -57,6 +57,7 @@ Select one of the options above [1-2]: 2
 +---------------------+                                                                                                 
 Select one of the options above [1-2]: 2
 
+
 +-----------------------+                                                                                               
 |                       |                                                                                               
 |       Difficulty      |                                                                                               
@@ -69,6 +70,7 @@ Select one of the options above [1-2]: 2
 |  3. Hard (Depth: 8)   |                                                                                               
 +-----------------------+                                                                                               
 Select one of the options above [1-3]: 2
+
 
 +---------------------+                                                                                                 
 |                     |                                                                                                 
