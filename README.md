@@ -1,14 +1,14 @@
 # Connect Four Game
 * Two game modes available:
-    * Player vs. Player
-    * Player vs. PC
+    * **Player vs. Player**
+    * **Player vs. PC**
 * If you want to play against PC, you have to choose which adversial algorithm he must use:
-    * Minimax
-    * Alpha-beta pruning
+    * **Minimax**
+    * **Alpha-beta pruning**
 * Its also possible to choose the AI difficulty:
-    * Easy (checks moves using Depth: 4)
-    * Medium (checks moves using Depth: 6)
-    * Hard (checks moves using Depth: 8)
+    * **Easy** &ensp; (checks moves using Depth: 4)
+    * **Medium** (checks moves using Depth: 6)
+    * **Hard** (checks moves using Depth: 8)
 * And lastly, you have to choose who plays first
 
 ## Compilation:
