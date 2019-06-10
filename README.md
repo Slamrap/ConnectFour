@@ -6,7 +6,7 @@
     * **Minimax**
     * **Alpha-beta pruning**
 * Its also possible to choose the AI difficulty:
-    * **Easy** &ensp; (checks moves using Depth: 4)
+    * **Easy** (checks moves using Depth: 4)
     * **Medium** (checks moves using Depth: 6)
     * **Hard** (checks moves using Depth: 8)
 * And lastly, you have to choose who plays first
