@@ -99,11 +99,13 @@ class Cell {
     drawArrow(ctx){
         let offset = this.width / 4;
 
+        // console.log(offset + " " + this.x + " " + this.y);
+
         // first triangle
         ctx.beginPath();
         ctx.moveTo(this.x + offset, this.y + offset);
-        ctx.lineTo(this.x + this.width / 2, offset - this.y + this.height / 2);
-        ctx.lineTo(this.x + this.width / 2, offset + this.y + this.height / 2);
+        ctx.lineTo(this.x + this.width / 2, this.y + offset + this.height / 5);
+        ctx.lineTo(this.x + this.width / 2, this.y + offset + this.height / 2);
         ctx.closePath();
 
         // the outline
@@ -118,8 +120,8 @@ class Cell {
         //second triangle
         ctx.beginPath();
         ctx.moveTo(this.x + this.width - offset, this.y + offset);
-        ctx.lineTo(this.x + this.width / 2, offset - this.y + this.height / 2);
-        ctx.lineTo(this.x + this.width / 2, offset + this.y + this.height / 2);
+        ctx.lineTo(this.x + this.width / 2, this.y + offset + this.height / 5);
+        ctx.lineTo(this.x + this.width / 2, this.y + offset + this.height / 2);
         ctx.closePath();
         
         // the outline

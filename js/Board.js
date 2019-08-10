@@ -10,8 +10,8 @@ canvas.addEventListener("mousemove", highlightCol);
 
 function gridDimensions(){
     var dimensions = [];
-    var add_rows = 2;
-    
+    var add_rows = 1;
+    // console.log("width:" + width);
     let cell_width, marginX, marginY;
     // portrait
     if ((width - margin * 2) * (GRID_ROWS + add_rows) / GRID_COLS < height - margin * 2) {
@@ -36,7 +36,7 @@ function createBoard(){
     let cell_width = dimensions[0];
     let marginX = dimensions[1];
     let marginY = dimensions[2];
-
+    // console.log("mX: " + marginX + " : mY: " + marginY + " : c_W: " + cell_width);
     // populate arrow
     for(let i = 0; i < GRID_COLS; i++){
         let x = marginX + i * cell_width;
@@ -109,25 +109,27 @@ function drawBoard(){
 }
 
 function highlightCol(ev){
-    for (let row of board) {
-        for (let cell of row) {
-            if(cell.contains(ev.clientX, ev.clientY, arrows[0].y, board[GRID_ROWS-1][GRID_ROWS-1].y + cell.height)){
-                //cell.focus = true;
-                //console.log(cell.col);
-                arrows[cell.col].focus = true;
-                //arrows[cell.col].drawArrow(ctx);
-
-                //let frame_height = cell.height * GRID_ROWS;
-                //ctx.fillStyle = COLOR_FOCUS_COL;
-                //ctx.fillRect(board[0][cell.col].x, board[0][cell.col].y, board[GRID_ROWS-1][cell.col].x, board[GRID_ROWS-1][cell.col].y);
-
-            }
-            else{
-                //cell.focus = false;
-                arrows[cell.col].focus = false;
-                //let frame_height = cell.height * GRID_ROWS;
-                //ctx.fillStyle = COLOR_FRAME;
-                //ctx.fillRect(board[0][cell.col].x, board[0][cell.col].y, board[GRID_ROWS-1][cell.col].x, board[GRID_ROWS-1][cell.col].y);
+    if(!animationActive){
+        for (let row of board) {
+            for (let cell of row) {
+                if(cell.contains(ev.clientX, ev.clientY, arrows[0].y, board[GRID_ROWS-1][GRID_ROWS-1].y + cell.height)){
+                    //cell.focus = true;
+                    //console.log(cell.col);
+                    arrows[cell.col].focus = true;
+                    //arrows[cell.col].drawArrow(ctx);
+    
+                    //let frame_height = cell.height * GRID_ROWS;
+                    //ctx.fillStyle = COLOR_FOCUS_COL;
+                    //ctx.fillRect(board[0][cell.col].x, board[0][cell.col].y, board[GRID_ROWS-1][cell.col].x, board[GRID_ROWS-1][cell.col].y);
+    
+                }
+                else{
+                    //cell.focus = false;
+                    arrows[cell.col].focus = false;
+                    //let frame_height = cell.height * GRID_ROWS;
+                    //ctx.fillStyle = COLOR_FRAME;
+                    //ctx.fillRect(board[0][cell.col].x, board[0][cell.col].y, board[GRID_ROWS-1][cell.col].x, board[GRID_ROWS-1][cell.col].y);
+                }
             }
         }
     }
@@ -179,8 +181,10 @@ function dropPiece(column){
 function dropAnimation(cell, x, y, r){
     //ctx.clearRect(0, 0, canvas.width, canvas.height);
     let speed = cell.height / 8;
+    arrows[cell.col].focus = true;
 
     drawBoard();
+    drawHeader();
 
     ctx.globalCompositeOperation='destination-over';
     //ctx.fillStyle = cell.chooseColor(TURN);
@@ -216,6 +220,7 @@ function dropAnimation(cell, x, y, r){
         cell.owner = TURN;
         cell.drawPiece(ctx);
         gameStatus(board, TURN);
+        arrows[cell.col].focus = false;
         animationActive = false;
         changeTurn();
     }
