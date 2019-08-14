@@ -2,7 +2,7 @@
 //canvas.addEventListener("click", click);
 //canvas.addEventListener("mousemove", highlightCol);
 window.addEventListener("resize", setDimensions);
-window.addEventListener('keydown', newGame);
+//window.addEventListener('keydown', newGame);
 
 // game loop
 var time_delta, init_time;
@@ -80,16 +80,25 @@ function setDimensions() {
     //document.body.style.backgroundColor = "green";
 }
 
-function newGame(e){
-    var code = e.keyCode;
-    var spacebar = 32;
-    if(code == spacebar){
-        setDimensions();
-        //createBoard();
-        //drawBoard();
-        requestAnimationFrame(loop);
-    }
+function newGame(){
+    arrows = [];
+    board = [];
+    hideDiv("startMenu");
+    setDimensions();
+    showDiv("game", "flex");
+    requestAnimationFrame(loop);
 }
+
+// function newGame(e){
+//     var code = e.keyCode;
+//     var spacebar = 32;
+//     if(code == spacebar){
+//         setDimensions();
+//         //createBoard();
+//         //drawBoard();
+//         requestAnimationFrame(loop);
+//     }
+// }
 
 function changeTurn(){
     if(TURN == "PLAYER"){
@@ -99,4 +108,25 @@ function changeTurn(){
     else{
         TURN = "PLAYER";
     }
+}
+
+
+function hideDiv(divName){
+    var selected_div = document.getElementsByClassName(divName);
+    selected_div[0].style.display = "none";
+}
+
+function showDiv(divName, displayMode){
+    var selected_div = document.getElementsByClassName(divName);
+    selected_div[0].style.display = displayMode;
+}
+
+function openSettings(){
+    hideDiv("startMenu");
+    showDiv("settings", "flex");
+}
+
+function closeSettings(){
+    hideDiv("settings");
+    showDiv("startMenu", "flex");
 }

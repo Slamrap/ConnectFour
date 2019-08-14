@@ -1,8 +1,205 @@
+:root {
+    --bg-color: #F7F9FB;
+    --focusColor: #8FC1E3;
+    --normalColor: #5085A5;
+    --color3: #31708E;
+    --color4: #687864;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     overflow: hidden;
+    background-color: var(--bg-color);
+}
+
+.button {
+    background-color: var(--normalColor);
+    border: none;
+    color: var(--bg-color);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+}
+
+.button:hover {
+    background-color: var(--focusColor);
+    color: var(--bg-color);
 }
 
 canvas {
     display: block;
 }
+
+.startMenu {
+    /*background-color: lightblue;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 100vh;
+    margin: auto;
+    /*padding: 0% 0% 15% 0%;*/
+}
+
+.startMenu h1{
+    margin-bottom: 5%;
+    color: var(--color4);
+}
+
+.startMenu button{
+    margin-bottom: 2%;
+}
+
+
+
+
+
+
+
+h3 {
+    margin-left: 10%;
+    color: var(--color4);
+}
+
+.game{
+    display:none;
+}
+
+.settings{
+    display:none;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    height: 100vh;
+    margin: auto;
+
+}
+
+.settings h1 {
+    color: var(--color4);
+}
+
+
+.gameMode {
+    display: grid;
+    /*background-color: #687864;*/
+    width: 100%;
+    grid-template-columns: 80% auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "title title"
+        "option1 switch1"
+        "option2 switch2";
+    margin-top: 5%;
+    margin-bottom: 5%;
+    grid-row-gap: 5%;
+}
+.gameMode h2 {
+    grid-area: title;
+}
+
+
+.AI_Algorithm {
+    /*background-color: #7cb96d;*/
+    width: 100%;
+    display: grid;
+    grid-template-columns: 80% auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "title title"
+        "option3 switch3"
+        "option4 switch4";
+    margin-bottom: 5%;
+    grid-row-gap: 5%;
+}
+
+.AI_Algorithm h2 {
+    grid-area: title;
+}
+
+
+.Difficulty {
+    /*background-color: #2fc50a;*/
+    width: 100%;
+    display: grid;
+    grid-template-columns: 80% auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "title title"
+        "option5 switch5"
+        "option6 switch6"
+        "option7 switch7";
+    margin-bottom: 5%;
+    grid-row-gap: 5%;
+}
+
+.Difficulty h2 {
+    grid-area: title;
+}
+
+
+.PlayFirst{
+    /*background-color: #0a16b8;*/
+    width: 100%;
+    display: grid;
+    align-content: center;
+    grid-template-columns: 80% auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "title title"
+        "option8 switch8"
+        "option9 switch9";
+    margin-bottom: 5%;
+    grid-row-gap: 5%;
+}
+
+.PlayFirst h2 {
+    grid-area: title;
+}
+
+
+.DarkMode{
+    /*background-color: #cc5916;*/
+    width: 100%;
+    display: grid;
+    grid-template-columns: 80% auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "title title"
+        "option10 switch10";
+    grid-row-gap: 5%;
+}
+
+.DarkMode h2 {
+    grid-area: title;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.gameOverMenu{
+    display:none;
+}
+

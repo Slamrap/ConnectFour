@@ -2,10 +2,15 @@ const GRID_COLS = 7; // number of game columns
 const GRID_ROWS = 6; // number of game rows
 const MARGIN = 0.02; // margin as a fraction of the shortest screen dimension
 
-
+/*
 const COLOR_BACKGROUND = "mintcream";
 const COLOR_FRAME = "dodgerblue";
 const COLOR_FOCUS_COL = "lightblue";
+*/
+
+const COLOR_BACKGROUND = "#F7F9FB";
+const COLOR_FRAME = "#31708E";
+const COLOR_FOCUS_COL = "#8FC1E3";
 
 const COLOR_ARROW1 = "yellow";
 const COLOR_ARROW2 = "#FFFFCC";
