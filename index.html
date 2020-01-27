@@ -1,110 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="./css/toggleButton.css">
-    <link rel="stylesheet" href="./css/closeButton.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <title>Connect Four</title>
-</head>
-<body>
-    <div class="startMenu">
-        <h1>Connect Four</h1>
-        <button class="button" onclick="newGame()">Start Game</button>
-        <button class="button" onclick="openSettings()">Settings</button>
-    </div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/navbar.css">
+        <link rel="stylesheet" href="./css/switchButton.css">
+        <link rel="stylesheet" href="./css/settings.css">
+        
+        <title>Connect Four</title>
+    </head>
+    <body>
+        <div class="startMenu">
+            <div class="card">
+                <div class="card_content">
+                    <h1>Connect Four</h1>
+                    <button class="button" id="start_btn">Start Game</button>
+                    <button class="button" id="settings_btn">Settings</button>
+                </div>
+            </div>
+        </div>
 
-    <div class="game">
-        <header>
-            <h4>Connect Four</h4>
-            <nav>
-                <ul>
-                    <li><a href="">Github</a></li>
-                    <li>Settings</li>
-                </ul>
-            </nav>
-        </header>
-        <div class="turnLabel">
-            <h3>Player's turn</h3>
-            <h3>PC's turn</h3>
-        </div>
-        <div class="gameBoard">
+        <div class="game">
+            <div class="header-wrapper">
+                <header class="header">
+                    <a class="logo">Connect Four</a>
+                    <input class="menu-btn" type="checkbox" id="menu-btn" />
+                    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+                    <ul class="menu">
+                        <li><a href="">New Game</a></li>
+                        <li><a href="https://github.com/Slamrap/">Github</a></li>
+                    </ul>
+                </header>
+            </div>
+            <div class="gameBoard">
 
+            </div>
         </div>
-    </div>
 
-    <div class="settings">
-        <h1>Settings</h1>
-        <a href="#" class="close" onclick="closeSettings()"></a>
-        <div class="gameMode">
-            <h2>Game mode:</h2>
-            <h3 id="option1">Player vs. Player</h3>
-            <div class="input-container">
-                <input type="checkbox" id="switch1" name="PlayerVsPlayer"/><label for="switch1">Toggle</label>
-            </div>
-            <h3 id="option2">Player vs. IA</h3>
-            <div class="input-container">
-                <input type="checkbox" id="switch2" name="PlayerVsIA"/><label for="switch2">Toggle</label>
+        <div class="settings">
+            <div class="settings-content">
+                <span class="close">&times;</span>
+                <h1>Settings</h1>
+                
+                <div class="card">
+                    <div id="gameMode" class="card-content">
+                        <form class="form">
+                            <h3>Game mode</h3>
+                            <div class="switch-field">
+                                <input type="radio" id="radio-one" name="switch-one" value="yes" checked/>
+                                <label for="radio-one">Player vs. Player</label>
+                                <input type="radio" id="radio-two" name="switch-one" value="no" />
+                                <label for="radio-two">Player vs. AI</label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card">
+                    <div id="Difficulty" class="card-content">
+                        <form class="form">
+                            <h3>Difficulty</h3>
+                            <div class="switch-field">
+                                <input type="radio" id="radio-three" name="switch-two" value="yes" checked/>
+                                <label for="radio-three">Easy</label>
+                                <input type="radio" id="radio-four" name="switch-two" value="maybe" />
+                                <label for="radio-four">Medium</label>
+                                <input type="radio" id="radio-five" name="switch-two" value="no" />
+                                <label for="radio-five">Hard</label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card">
+                    <div id="PlayFirst" class="card-content">
+                        <form class="form">
+                            <h3>Who plays first</h3>
+                            <div class="switch-field">
+                                <input type="radio" id="radio-six" name="switch-three" value="yes" checked/>
+                                <label for="radio-six">Player</label>
+                                <input type="radio" id="radio-seven" name="switch-three" value="no" />
+                                <label for="radio-seven">AI</label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card">
+                    <div id="AI_Algorithm" class="card-content">
+                        <form class="form">
+                            <h3>AI algorithm</h3>
+                            <div class="switch-field">
+                                <input type="radio" id="radio-eight" name="switch-four" value="yes" checked/>
+                                <label for="radio-eight">Minimax</label>
+                                <input type="radio" id="radio-nine" name="switch-four" value="no" />
+                                <label for="radio-nine">Alpha-beta</label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="AI_Algorithm">
-            <h2>AI algorithm:</h2>
-            <h3 id="option3">Minimax</h3>
-            <div class="input-container">
-                <input type="checkbox" id="switch3" name="Minimax"/><label for="switch3">Toggle</label>
-            </div>
-            <h3 id="option4">Alpha-beta</h3>
-            <div class="input-container">
-                <input type="checkbox" id="switch4" name="Alpha-beta"/><label for="switch4">Toggle</label>
-            </div>
-        </div>
-        <div class="Difficulty">
-            <h2>Difficulty:</h2>
-            <h3 id="option5">Easy</h3>
-            <div class="input-container">
-                <input type="checkbox" id="switch5" name="Easy"/><label for="switch5">Toggle</label>
-            </div>
-            <h3 id="option6">Medium</h3>
-            <div class="input-container">
-                <input type="checkbox" id="switch6" name="Medium"/><label for="switch6">Toggle</label>
-            </div>
-            <h3 id="option7">Hard</h3>
-            <div class="input-container">
-                <input type="checkbox" id="switch7" name="Hard"/><label for="switch7">Toggle</label>
-            </div>
-        </div>
-        <div class="PlayFirst">
-            <h2>Who plays first:</h2>
-            <h3 id="option8">Player</h3>
-            <div class="input-container">
-                <input type="checkbox" id="switch8" name="Player_First"/><label for="switch8">Toggle</label>
-            </div>
-            <h3 id="option9">IA</h3>
-            <div class="input-container">
-                <input type="checkbox" id="switch9" name="PC_First"/><label for="switch9">Toggle</label>
-            </div>
-        </div>
-        <div class="DarkMode">
-            <h2>Theme:</h2>
-            <h3 id="option10">Light / Dark Mode:</h3>
-            <div class="input-container">
-                <input type="checkbox" id="switch10" name="darkMode"/><label for="switch10">Toggle</label>
-            </div>
-        </div>
-    </div>
-
-    <div class="gameOverMenu">
-        <h3>Game Over!</h3>
-        <h4>Player won!</h4>
-        <button class="button" onclick="newGame()">New Game</button>
-        <button class="button">Settings</button>
-    </div>
-
-    <script src="./js/Constants.js"></script>
-    <script src="./js/Cell.js"></script>
-    <script src="./js/Board.js"></script>
-    <script src="./js/Node.js"></script>
-    <script src="./js/AlphaBeta.js"></script>
-    <script src="./js/Main.js"></script>
-</body>
+        
+        <script src="./js/settings.js"></script>
+        <script src="./js/main.js"></script>
+    </body>
 </html>
