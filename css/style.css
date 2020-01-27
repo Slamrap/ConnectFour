@@ -85,6 +85,9 @@ html {
 .gameBoard{
   height: 100vh;
   background-color: var(--bg_light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .card {
@@ -102,6 +105,88 @@ html {
 @media all and (orientation:landscape) {
   .startMenu button{
     width: 40vh;
-    
   }
 }
+
+table {
+  background-color: #31708E;
+  width: 40vw;
+  border-collapse: separate;
+  border-spacing: 1vw;
+}
+
+td{
+  text-align: center;
+  vertical-align: middle;
+  width: calc((40vw / 7) - 4vw);
+  height: calc((40vw / 7) - 4vw);
+}
+
+.cell {
+  display: inline-block;
+  width: 4vw;
+  height: 4vw;
+  background-color: var(--bg_light);
+  border-radius: 50%;
+
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    width: 70vw;
+   
+  }
+  td{
+    width: calc((70vw / 7) - 9vw);
+  height: calc((70vw / 7) - 9vw);
+  }
+  .cell {
+    width: 8vw;
+    height: 8vw;
+  }
+}
+
+
+
+/*
+
+table {
+  background-color: #31708E;
+  width: 60vw;
+  border-collapse: separate;
+  border-spacing: 2.5vw;
+}
+
+td{
+  text-align: center;
+  vertical-align: middle;
+  width: 14.3%;
+  height: 2vw;
+}
+
+.cell {
+  display: inline-block;
+  width: 7vw;
+  height: 7vw;
+  background-color: var(--bg_light);
+  border-radius: 50%;
+
+}
+
+
+@media screen and (max-width: 1170px) {
+  table {
+    width: 80vw;
+   
+  }
+  td{
+    height: 8vw;
+  }
+  .cell {
+    width: 7vw;
+    height: 7vw;
+  }
+}
+
+
+*/
