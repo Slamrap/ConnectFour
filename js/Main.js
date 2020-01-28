@@ -1,6 +1,7 @@
 var start_btn = document.getElementById("start_btn");
-var startMenu_div = document.getElementsByClassName("startMenu")[0];
+var startMenu_div = document.getElementById("startMenu");
 var game_div = document.getElementsByClassName("game")[0];
+var endGameMenu_div = document.getElementById("endGameMenu");
 
 window.addEventListener("resize", setDimensions);
 
@@ -8,12 +9,14 @@ window.onload = function(event) {
     startMenu_div.style.display = "flex";
     settings.style.display = "none";
     game_div.style.display = "none";
+    endGameMenu_div.display = "none";
 }
 
 start_btn.onclick = function() {
     game_div.style.display = "block";
     settings.style.display = "none";
     startMenu_div.style.display = "none";
+    endGameMenu_div.display = "none";
     newGame();
 }
 
