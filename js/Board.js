@@ -292,23 +292,44 @@ function gameStatus(status, player){
 }
 
 function who_Won(result, player){
+
+    var winner = document.getElementById("Who_Won");
+    
     switch (player){
         case "PLAYER":
-            if(result == DRAW)
-                console.log("It's a Draw");
-            else if(result == X_WIN)
-                console.log("PLAYER WON!");
-            else
-                console.log("PC WON!");
+            if(result == DRAW){
+                winner.textContent = "It's a Draw";
+                game_div.style.display = "none";
+                endGameMenu_div.display = "flex";
+            }
+            else if(result == X_WIN){
+                winner.textContent = "PLAYER WON!";
+                game_div.style.display = "none";
+                endGameMenu_div.display = "flex";
+            }
+            else{
+                winner.textContent = "PC WON!";
+                game_div.style.display = "none";
+                endGameMenu_div.display = "flex";
+            }
             break;
 
         case "PC":
-            if(result == DRAW)
-                console.log("It's a Draw");
-            else if(result == O_WIN)
-                console.log("PC WON!");
-            else
-                console.log("PLAYER WON!");
+            if(result == DRAW){
+                winner.textContent = "It's a Draw";
+                game_div.style.display = "none";
+                endGameMenu_div.display = "flex";
+            }
+            else if(result == O_WIN){
+                winner.textContent = "PC WON!";
+                game_div.style.display = "none";
+                endGameMenu_div.display = "flex";
+            }
+            else{
+                winner.textContent = "PLAYER WON!";
+                game_div.style.display = "none";
+                endGameMenu_div.display = "flex";
+            }
             break;
     }
 }
