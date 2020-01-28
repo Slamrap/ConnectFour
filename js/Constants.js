@@ -8,7 +8,7 @@ const COLOR_FRAME = "dodgerblue";
 const COLOR_FOCUS_COL = "lightblue";
 */
 
-const COLOR_BACKGROUND = "#F7F9FB";
+const COLOR_BACKGROUND = "#f5f5f5";
 const COLOR_FRAME = "#31708E";
 const COLOR_FOCUS_COL = "#8FC1E3";
 
