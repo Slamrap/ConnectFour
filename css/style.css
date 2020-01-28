@@ -46,7 +46,7 @@ body{
 
 
 
-.startMenu {
+.smallMenu {
   background-color: var(--bg_light);
   display: flex;
   flex-direction: column;
@@ -68,16 +68,15 @@ body{
 }
 
 
-.startMenu h1{
+.smallMenu h1{
   margin-bottom: 15%;
   color: var(--font_color3);
 }
 
-.startMenu button{
+.smallMenu button{
   width: 25vh;
   margin-bottom: 5%;
 }
-
 
 
 .game {
