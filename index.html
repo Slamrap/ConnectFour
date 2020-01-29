@@ -12,20 +12,10 @@
         <title>Connect Four</title>
     </head>
     <body>
-        <div class="smallMenu" id="startMenu">
+        <div class="startMenu">
             <div class="card">
                 <div class="card_content">
                     <h1>Connect Four</h1>
-                    <button class="button" id="start_btn">Start Game</button>
-                    <button class="button" id="settings_btn">Settings</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="smallMenu" id="endGameMenu">
-            <div class="card">
-                <div class="card_content">
-                    <h1 id="Who_Won"></h1>
                     <button class="button" id="start_btn">Start Game</button>
                     <button class="button" id="settings_btn">Settings</button>
                 </div>
@@ -48,6 +38,15 @@
                 <div id="CurrentPlayer">
                     <h2>Current player</h2>
                     <h4 id="turnLabel"></h4>
+                </div>
+            </div>
+            <div class="endMenu">
+                <div class="card">
+                    <div class="card_content">
+                        <h1 id="Who_Won"></h1>
+                        <button class="button" id="start_btn">Start Game</button>
+                        <button class="button" id="settings_btn">Settings</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -114,12 +113,14 @@
             </div>
         </div>
         <script src="./js/Constants.js"></script>
-        <script src="./js/main.js"></script>
+        <script src="./js/settings.js"></script>
+        
         <script src="./js/Cell.js"></script>
         <script src="./js/Board.js"></script>
         <script src="./js/Node.js"></script>
         <script src="./js/AlphaBeta.js"></script>
-        <script src="./js/settings.js"></script>
+        <script src="./js/main.js"></script>
+
         
     </body>
 </html>
