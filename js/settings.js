@@ -46,6 +46,8 @@ function setGameMode(){
     var option = gameMode_form.elements[i];
     if(option.checked)
       GAME_MODE = option.id;
+    if(GAME_MODE != "PLAYER_VS_AI")
+      TURN = "PLAYER1";
   }
 }
 
@@ -88,5 +90,10 @@ function defaultSettings(){
   GAME_MODE = gameMode_form.elements[0].id;
   DEPTH = 4;
   PLAY_FIRST = playFirst_form.elements[0].id;
+  TURN = PLAY_FIRST;
   ALGORITHM = Algorithm_form.elements[0].id;
+  if(GAME_MODE === "PLAYER_VS_AI")
+    TURN = PLAY_FIRST;
+  else
+    TURN = "PLAYER1";
 }
