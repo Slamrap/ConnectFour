@@ -17,51 +17,17 @@ class Cell {
 
     // draw the circle or hole
     draw(ctx) {
-        /*
-        if(winner){
-            if
-            color = 
-        }
-        else{
-            color = 
-        }
-
-
-        */
-
         // choose color
         var color = this.chooseColor(this.owner);
-        
         if(this.focus){
             this.drawArrow(ctx); 
         }
         else if(this.owner == null){
             this.drawCircle(ctx, color);
-            /*
-            if(!this.moving){
-                this.drawCircle(ctx, color);
-            }
-            else{
-                this
-            }
-            */"potato".includes("to")
-            //this.drawCircle(ctx, color);
         }
         else if(this.owner.includes("PLAYER") || this.owner == "PC"){
             this.drawPiece(ctx);
         }
-        /*
-        if(this.focus){
-            // draw arrow
-            if(this.row == 0){
-                this.drawArrow(ctx); 
-            }
-        }
-        else{
-            this.drawCircle(ctx, color);
-            //this.drawCircle(ctx, "black");
-        }
-        */
     }
 
     chooseColor(owner){
@@ -84,23 +50,17 @@ class Cell {
         let cx = this.x + this.width / 2;
         let cy = this.y + this.height / 2;
         let r = this.width * GRID_CIRCLE / 2;
-
         ctx.beginPath();
         ctx.arc(cx, cy, r, 0, 2 * Math.PI);
         ctx.closePath();
-        //ctx.fill();
         ctx.fillStyle = color;
-        //ctx.fill('evenodd');
         ctx.fill();
-
         ctx.globalCompositeOperation='source-over';
     }
 
     drawArrow(ctx){
         let offset = this.width / 4;
-
-        // console.log(offset + " " + this.x + " " + this.y);
-
+        
         // first triangle
         ctx.beginPath();
         ctx.moveTo(this.x + offset, this.y + offset);
@@ -132,22 +92,6 @@ class Cell {
         // the fill color
         ctx.fillStyle = COLOR_ARROW2;
         ctx.fill();
-
-        /*
-        // draw piece
-        let cx = this.x + this.width / 2;
-        let cy = this.y + this.height + offset;
-        let r = this.width * GRID_CIRCLE / 2;
-
-        ctx.globalCompositeOperation='destination-out';
-        
-        let color = "red";
-        ctx.beginPath();
-        ctx.arc(cx, cy, r, 0, 2 * Math.PI);
-        ctx.fillStyle = color;
-        ctx.fill();
-        ctx.globalCompositeOperation='source-over';
-        */
     }
 
     drawPiece(ctx){
@@ -156,12 +100,8 @@ class Cell {
         let cy = this.y + this.height / 2;
         let r = this.width * GRID_CIRCLE / 2;
 
-        //let color = this.chooseColor(this.owner);
         ctx.beginPath();
         ctx.arc(cx, cy, r, 0, 2 * Math.PI);
-        //ctx.fillStyle = color;
-        // ctx.fill();
-        // ctx.closePath();
 
         // create radial gradient
         var grdRadial = ctx.createRadialGradient(cx, cy, r, cx - offset, cy - offset, r - offset);
