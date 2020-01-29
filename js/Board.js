@@ -12,7 +12,7 @@ canvas.addEventListener("mousemove", highlightCol);
 function gridDimensions(){
     var dimensions = [];
     var add_rows = 1; // for displaying the arrows
-    // console.log("width:" + width);
+
     let cell_width, marginX, marginY;
     // portrait
     if ((width - margin * 2) * (GRID_ROWS + add_rows) / GRID_COLS < height - margin * 2) {
@@ -63,13 +63,11 @@ function createBoard(){
     let cell_width = dimensions[0];
     let marginX = dimensions[1];
     let marginY = dimensions[2];
-    // console.log("mX: " + marginX + " : mY: " + marginY + " : c_W: " + cell_width);
+
     // populate arrow
     for(let i = 0; i < GRID_COLS; i++){
         let x = marginX + i * cell_width;
         let y = marginY;
-        // let x = marginX + i * cell_width;
-        // let y = 2* marginY;
         arrows[i] = new Cell(x, y, i, 0, cell_width, cell_width);
         arrows[i].owner = "ARROW";
     }
@@ -81,8 +79,6 @@ function createBoard(){
         for (let j = 0; j < GRID_COLS; j++) {
             let x = marginX + j * cell_width;
             let y = marginY + i * cell_width;
-            // let x = marginX + j * cell_width;
-            // let y = 2 * marginY + i * cell_width;
             board[i][j] = new Cell(x, y, i, j, cell_width, cell_width);
         }
     }
@@ -100,7 +96,6 @@ function drawHeader(){
 
     // draw arrows header box
     ctx.fillStyle = COLOR_BACKGROUND;
-    // ctx.fillStyle = COLOR_FOCUS_COL;
     ctx.fillRect(arrows[0].x, arrows[0].y, frame_width, arrows[0].height);
 
     // draw triangle
@@ -118,16 +113,12 @@ function drawBoard(){
     ctx.fillStyle = COLOR_FRAME;
     ctx.fillRect(cell.x, cell.y, frame_width, frame_height);
 
-    //ctx.globalCompositeOperation='destination-out';
-
     // draw each cell
     for (let row of board) {
         for (let cell of row) {
             cell.draw(ctx);
         }
     }
-    //ctx.globalCompositeOperation='source-over';
-
 }
 
 function highlightCol(ev){
@@ -135,22 +126,10 @@ function highlightCol(ev){
         for (let row of board) {
             for (let cell of row) {
                 if(cell.contains(ev.clientX, ev.clientY, arrows[0].y, board[GRID_ROWS-1][GRID_ROWS-1].y + cell.height)){
-                    //cell.focus = true;
-                    //console.log(cell.col);
                     arrows[cell.col].focus = true;
-                    //arrows[cell.col].drawArrow(ctx);
-    
-                    //let frame_height = cell.height * GRID_ROWS;
-                    //ctx.fillStyle = COLOR_FOCUS_COL;
-                    //ctx.fillRect(board[0][cell.col].x, board[0][cell.col].y, board[GRID_ROWS-1][cell.col].x, board[GRID_ROWS-1][cell.col].y);
-    
                 }
                 else{
-                    //cell.focus = false;
                     arrows[cell.col].focus = false;
-                    //let frame_height = cell.height * GRID_ROWS;
-                    //ctx.fillStyle = COLOR_FRAME;
-                    //ctx.fillRect(board[0][cell.col].x, board[0][cell.col].y, board[GRID_ROWS-1][cell.col].x, board[GRID_ROWS-1][cell.col].y);
                 }
             }
         }
@@ -175,12 +154,8 @@ function boardClick(ev){
 }
 
 function dropPiece(column){
-    //console.log(column + " : " + animationActive);
-    //column = getFocusColumn(ev.clientX, ev.clientY);
-    //console.log(column);
     if(!animationActive){
         for (let i = GRID_ROWS -1; i >= 0; i--) {
-            //console.log(turn + " " + i);
             if(board[i][column].owner == null){  
                 console.log("turn: " + TURN + " : " + " row: " + i + " col: " + column);
                 let cell = board[i][column];
@@ -189,11 +164,6 @@ function dropPiece(column){
                 let r = cell.width * GRID_CIRCLE / 2;
                 animationActive = true;
                 dropAnimation(cell, x, y, r);
-                //animationActive = false; 
-                //console.log("ola");
-                //cell.owner = turn;
-                //cell.drawPiece(ctx);
-                //changeTurn();
                 break;
             }
         } 
@@ -201,7 +171,6 @@ function dropPiece(column){
 }
 
 function dropAnimation(cell, x, y, r){
-    //ctx.clearRect(0, 0, canvas.width, canvas.height);
     let speed = cell.height / 8;
     arrows[cell.col].focus = true;
 
@@ -209,11 +178,10 @@ function dropAnimation(cell, x, y, r){
     drawHeader();
 
     ctx.globalCompositeOperation='destination-over';
-    //ctx.fillStyle = cell.chooseColor(TURN);
     let offset = cell.width/4;
     ctx.beginPath();
     ctx.arc(x, y, r, 0, 2 * Math.PI);
-    // create radial gradient
+
     var grdRadial = ctx.createRadialGradient(x, y, r, x - offset, y - offset, r - offset);
     if(TURN == "PLAYER" || TURN == "PLAYER1"){
         // dark color
@@ -230,7 +198,6 @@ function dropAnimation(cell, x, y, r){
     ctx.fillStyle = grdRadial;
     ctx.fill();
     ctx.closePath();
-    //ctx.fill();
     ctx.globalCompositeOperation='source-over';
 
     if(y + cell.height <= cell.y + cell.height + (cell.height / 2)){
@@ -265,14 +232,6 @@ function movePC(PLAY_FIRST){
     console.log("best move: " +  bestMove);
     dropPiece(bestMove);
 }
-
-
-
-
-
-
-
-
 
 function copyBoard(board){
     temp = [];
@@ -460,7 +419,6 @@ function checkCols(state){
     for(let j = 0; j < GRID_COLS; j++){
         for(let i = 0; i < GRID_ROWS - 3; i++){
             for(let k = i; k < i + 4; k++){
-                //console.log(board[k][j]);
                 if(state[k][j].owner == "PLAYER" || state[k][j].owner == "PLAYER1")
                     countX++;
                 else if(state[k][j].owner == "PC" || state[k][j].owner == "PLAYER2")

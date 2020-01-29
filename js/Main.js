@@ -4,6 +4,27 @@ var game_div = document.getElementsByClassName("game")[0];
 var endMenu_div = document.getElementsByClassName("endMenu")[0];
 var restart_btn = document.getElementById("restart_btn");
 
+// game loop
+var time_delta, init_time;
+
+// canvas variables
+var height, width, margin;
+var arrows = [];
+var board = [];
+
+// game variables
+var TURN = "";
+var GAME_OVER = false;
+
+// Settings
+var GAME_MODE = "";
+var DEPTH = 0;
+var PLAY_FIRST = "";
+var ALGORITHM = "";
+
+//piece animation
+var endPercent = 101;
+var curPerc = 0;
 
 window.addEventListener("resize", setDimensions);
 
@@ -29,35 +50,6 @@ start_btn.onclick = function() {
 restart_btn.onclick = function() {
     location.reload();
 }
-
-
-
-// game loop
-var time_delta, init_time;
-//requestAnimationFrame(loop);
-
-// canvas dimensions
-var height, width, margin;
-
-var arrows = [];
-var board = [];
-
-// game variables
-var TURN = "";
-var GAME_OVER = false;
-
-// Settings
-var GAME_MODE = "";
-var DEPTH = 0;
-var PLAY_FIRST = "";
-var ALGORITHM = "";
-
-
-
-//piece animation
-var endPercent = 101;
-var curPerc = 0;
-//let speed = 10;
 
 function loop(time_now) {
     //ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -101,7 +93,6 @@ function gameTime(time_now){
 }
 
 function setDimensions() {
-    // height = window.innerHeight  - window.innerHeight/4;
     height = window.innerHeight * 0.75;
     width = window.innerWidth;
     canvas.height = height;
@@ -114,7 +105,6 @@ function setDimensions() {
 
     // body background color
     document.body.style.backgroundColor = COLOR_BACKGROUND;
-    //document.body.style.backgroundColor = "green";
     if(board.length != 0)
         updateBoardDimentions();
 }
@@ -125,17 +115,6 @@ function newGame(){
     setDimensions();
     requestAnimationFrame(loop);
 }
-
-// function newGame(e){
-//     var code = e.keyCode;
-//     var spacebar = 32;
-//     if(code == spacebar){
-//         setDimensions();
-//         //createBoard();
-//         //drawBoard();
-//         requestAnimationFrame(loop);
-//     }
-// }
 
 function changeTurn(){
     if(GAME_MODE === "PLAYER_VS_AI"){

@@ -1,10 +1,10 @@
 // Pop up window
 var settings = document.getElementsByClassName("settings")[0];
 
-// Buttons for openning settings menu
+// Button for openning settings menu
 var settings_btn = document.getElementById("settings_btn");
 
-// Close settings button
+// Close button
 var close_btn = document.getElementsByClassName("close")[0];
 
 var gameMode_form = document.getElementById("gameMode_form");
@@ -34,11 +34,6 @@ function setSettings(){
   setDifficulty();
   setPlayFirst();
   setAlgorithm();
-
-  console.log(GAME_MODE);
-    console.log(DEPTH);
-    console.log(PLAY_FIRST);
-    console.log(ALGORITHM);
 }
 
 function setGameMode(){
