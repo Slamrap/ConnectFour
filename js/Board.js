@@ -244,7 +244,8 @@ function dropAnimation(cell, x, y, r){
         gameStatus(board, TURN);
         arrows[cell.col].focus = false;
         animationActive = false;
-        changeTurn();
+        if(!GAME_OVER)
+            changeTurn();
     }
 }
 
@@ -292,43 +293,37 @@ function gameStatus(status, player){
 }
 
 function who_Won(result, player){
-
+    var endMenu_div = document.getElementsByClassName("endMenu")[0];
     var winner = document.getElementById("Who_Won");
     
     switch (player){
         case "PLAYER":
             if(result == DRAW){
                 winner.textContent = "It's a Draw";
-                game_div.style.display = "none";
-                endGameMenu_div.display = "flex";
+                endMenu_div.style.display = "flex";
             }
             else if(result == X_WIN){
                 winner.textContent = "PLAYER WON!";
-                game_div.style.display = "none";
-                endGameMenu_div.display = "flex";
+                endMenu_div.style.display = "flex";
             }
             else{
                 winner.textContent = "PC WON!";
-                game_div.style.display = "none";
-                endGameMenu_div.display = "flex";
+                endMenu_div.style.display = "flex";
             }
             break;
 
         case "PC":
             if(result == DRAW){
                 winner.textContent = "It's a Draw";
-                game_div.style.display = "none";
-                endGameMenu_div.display = "flex";
+                endMenu_div.style.display = "flex";
             }
             else if(result == O_WIN){
                 winner.textContent = "PC WON!";
-                game_div.style.display = "none";
-                endGameMenu_div.display = "flex";
+                endMenu_div.style.display = "flex";
             }
             else{
                 winner.textContent = "PLAYER WON!";
-                game_div.style.display = "none";
-                endGameMenu_div.display = "flex";
+                endMenu_div.style.display = "flex";
             }
             break;
     }
