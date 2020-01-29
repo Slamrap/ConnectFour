@@ -2,6 +2,8 @@ var start_btn = document.getElementById("start_btn");
 var startMenu_div = document.getElementsByClassName("startMenu")[0];
 var game_div = document.getElementsByClassName("game")[0];
 var endMenu_div = document.getElementsByClassName("endMenu")[0];
+var restart_btn = document.getElementById("restart_btn");
+
 
 window.addEventListener("resize", setDimensions);
 
@@ -17,6 +19,11 @@ start_btn.onclick = function() {
     startMenu_div.style.display = "none";
     newGame();
 }
+
+restart_btn.onclick = function() {
+    location.reload();
+}
+
 
 
 // game loop
@@ -53,6 +60,7 @@ function loop(time_now) {
         }
         drawTurn();
     }
+
 
     drawBoard();
     drawHeader();
