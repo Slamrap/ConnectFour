@@ -125,7 +125,7 @@ function highlightCol(ev){
     if(!animationActive){
         for (let row of board) {
             for (let cell of row) {
-                if(cell.contains(ev.clientX, ev.clientY, arrows[0].y, board[GRID_ROWS-1][GRID_ROWS-1].y + cell.height)){
+                if(cell.contains(ev.clientX, ev.clientY, arrows[0].y, board[GRID_ROWS-1][GRID_ROWS-1].y + 3*cell.height)){
                     arrows[cell.col].focus = true;
                 }
                 else{
@@ -139,7 +139,7 @@ function highlightCol(ev){
 function getFocusColumn(x, y){
     for (let row of board) {
         for (let cell of row) {
-            if(cell.contains(x, y, arrows[0].y, board[GRID_ROWS-1][GRID_ROWS-1].y + cell.height)){
+            if(cell.contains(x, y, arrows[0].y, board[GRID_ROWS-1][GRID_ROWS-1].y + 3*cell.height)){
                 return cell.col;
             }
         }
