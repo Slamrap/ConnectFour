@@ -16,6 +16,7 @@ window.onload = function(event) {
     console.log(DEPTH);
     console.log(PLAY_FIRST);
     console.log(ALGORITHM);
+    console.log(TURN);
 }
 
 start_btn.onclick = function() {
@@ -42,7 +43,7 @@ var arrows = [];
 var board = [];
 
 // game variables
-var TURN = "PLAYER";
+var TURN = "";
 var GAME_OVER = false;
 
 // Settings
@@ -137,12 +138,24 @@ function newGame(){
 // }
 
 function changeTurn(){
-    if(TURN == "PLAYER"){
-        TURN = "PC";
-        movePC(PLAY_FIRST);
+    if(GAME_MODE === "PLAYER_VS_AI"){
+        if(TURN == "PLAYER"){
+            TURN = "PC";
+            movePC(PLAY_FIRST);
+        }
+        else{
+            TURN = "PLAYER";
+        }
+        drawTurn();
     }
     else{
-        TURN = "PLAYER";
+        if(TURN == "PLAYER1"){
+            TURN = "PLAYER2";
+        }
+        else{
+            TURN = "PLAYER1";
+        }
+        drawTurn();
     }
-    drawTurn();
+    
 }

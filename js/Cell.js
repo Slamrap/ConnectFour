@@ -44,10 +44,10 @@ class Cell {
             else{
                 this
             }
-            */
+            */"potato".includes("to")
             //this.drawCircle(ctx, color);
         }
-        else if(this.owner == "PLAYER" || this.owner == "PC"){
+        else if(this.owner.includes("PLAYER") || this.owner == "PC"){
             this.drawPiece(ctx);
         }
         /*
@@ -71,7 +71,7 @@ class Cell {
         else if(owner == "ARROW"){
             return COLOR_FOCUS_COL;
         }
-        else if(owner == "PLAYER"){
+        else if(owner == "PLAYER" || owner == "PLAYER1"){
             return COLOR_PLAYER;
         }
         else{
@@ -165,7 +165,7 @@ class Cell {
 
         // create radial gradient
         var grdRadial = ctx.createRadialGradient(cx, cy, r, cx - offset, cy - offset, r - offset);
-        if(this.owner == "PLAYER"){
+        if(this.owner == "PLAYER" || this.owner == "PLAYER1"){
             // dark color
             grdRadial.addColorStop(0, COLOR_PLAYER);
             // light color

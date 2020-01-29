@@ -215,7 +215,7 @@ function dropAnimation(cell, x, y, r){
     ctx.arc(x, y, r, 0, 2 * Math.PI);
     // create radial gradient
     var grdRadial = ctx.createRadialGradient(x, y, r, x - offset, y - offset, r - offset);
-    if(TURN == "PLAYER"){
+    if(TURN == "PLAYER" || TURN == "PLAYER1"){
         // dark color
         grdRadial.addColorStop(0, COLOR_PLAYER);
         // light color
@@ -254,7 +254,14 @@ function movePC(PLAY_FIRST){
     let n = new Node(board, "PC", PLAY_FIRST);
 
     let bestMove = 0;
-    bestMove = alpha_beta(n, DEPTH, TURN, Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER);
+    if(ALGORITHM === "MINIMAX"){
+        bestMove = minimax(n, DEPTH, TURN);
+        console.log("minimax-played");
+    }
+    else{
+        bestMove = alpha_beta(n, DEPTH, TURN, Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER);
+        console.log("alpha_beta-played");
+    }
     console.log("best move: " +  bestMove);
     dropPiece(bestMove);
 }
@@ -326,6 +333,34 @@ function who_Won(result, player){
                 endMenu_div.style.display = "flex";
             }
             break;
+        case "PLAYER1":
+            if(result == DRAW){
+                winner.textContent = "It's a Draw";
+                endMenu_div.style.display = "flex";
+            }
+            else if(result == O_WIN){
+                winner.textContent = "PLAYER2 WON!";
+                endMenu_div.style.display = "flex";
+            }
+            else{
+                winner.textContent = "PLAYER1 WON!";
+                endMenu_div.style.display = "flex";
+            }
+            break;
+        case "PLAYER2":
+            if(result == DRAW){
+                winner.textContent = "It's a Draw";
+                endMenu_div.style.display = "flex";
+            }
+            else if(result == O_WIN){
+                winner.textContent = "PLAYER2 WON!";
+                endMenu_div.style.display = "flex";
+            }
+            else{
+                winner.textContent = "PLAYER1 WON!";
+                endMenu_div.style.display = "flex";
+            }
+            break;
     }
 }
 
@@ -365,7 +400,7 @@ function utility(state, player){
         else if(evalRows == O_WIN || evalCols == O_WIN || evalDiagonalRight == O_WIN || evalDiagonalLeft == O_WIN)
             return O_WIN;
         else{
-            if(player == "PLAYER") //player Bonus of +16 for 'X', -16 for 'O'
+            if(player == "PLAYER" || player == "PLAYER1") //player Bonus of +16 for 'X', -16 for 'O'
                 return evalRows + evalCols + evalDiagonalLeft + evalDiagonalRight + 16;
             else
                 return evalRows + evalCols + evalDiagonalLeft + evalDiagonalRight - 16;
@@ -398,9 +433,9 @@ function checkRows(state){
     for(let i = 0; i < GRID_ROWS; i++){
         for(let j = 0; j < GRID_COLS - 3; j++){
             for(let k = j; k < j + 4; k++){
-                if(state[i][k].owner == "PLAYER")
+                if(state[i][k].owner == "PLAYER" || state[i][k].owner == "PLAYER1")
                     countX++;
-                else if(state[i][k].owner == "PC")
+                else if(state[i][k].owner == "PC" || state[i][k].owner == "PLAYER2")
                     countO++;
             }
             if(countX == 4)
@@ -426,9 +461,9 @@ function checkCols(state){
         for(let i = 0; i < GRID_ROWS - 3; i++){
             for(let k = i; k < i + 4; k++){
                 //console.log(board[k][j]);
-                if(state[k][j].owner == "PLAYER")
+                if(state[k][j].owner == "PLAYER" || state[k][j].owner == "PLAYER1")
                     countX++;
-                else if(state[k][j].owner == "PC")
+                else if(state[k][j].owner == "PC" || state[k][j].owner == "PLAYER2")
                     countO++;
             }
             if(countX == 4)
@@ -454,9 +489,9 @@ function checkDiagonalRight(state){
         let auxIndex = i;
         for(let j = 0; j < GRID_COLS - 3; j++){
             for(let k = j; k < j + 4; k++){
-                if(state[auxIndex][k].owner == "PLAYER")
+                if(state[auxIndex][k].owner == "PLAYER" || state[auxIndex][k].owner == "PLAYER1")
                     countX++;
-                else if(state[auxIndex][k].owner == "PC")
+                else if(state[auxIndex][k].owner == "PC" || state[auxIndex][k].owner == "PLAYER2")
                     countO++;
 
                 auxIndex--;
@@ -486,9 +521,9 @@ function checkDiagonalLeft(state){
         let auxIndex = i;
         for(let j = GRID_COLS - 1; j > GRID_COLS - 5; j--){
             for(let k = j; k > j - 4; k--){
-                if(state[auxIndex][k].owner == "PLAYER")
+                if(state[auxIndex][k].owner == "PLAYER" || state[auxIndex][k].owner == "PLAYER1")
                     countX++;
-                else if(state[auxIndex][k].owner == "PC")
+                else if(state[auxIndex][k].owner == "PC" || state[auxIndex][k].owner == "PLAYER2")
                     countO++;
 
                 auxIndex--;
