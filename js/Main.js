@@ -4,9 +4,6 @@ var game_div = document.getElementsByClassName("game")[0];
 var endMenu_div = document.getElementsByClassName("endMenu")[0];
 var restart_btn = document.getElementById("restart_btn");
 
-// game loop
-var time_delta, init_time;
-
 // canvas variables
 var height, width, margin;
 var arrows = [];
@@ -51,11 +48,7 @@ restart_btn.onclick = function() {
     location.reload();
 }
 
-function loop(time_now) {
-    //ctx.clearRect(0, 0, canvas.width, canvas.height);
-    // update game loop
-    gameTime(time_now);
-
+function gameLoop(){
     if(board.length == 0){
         createBoard();
         if(PLAY_FIRST != "PLAYER"){
@@ -63,33 +56,9 @@ function loop(time_now) {
         }
         drawTurn();
     }
-
-
     drawBoard();
     drawHeader();
-
-
-    // update
-    //goComputer(time_delta);
-
-    // draw
-    //drawBackground();
-    //drawGrid();  board.draw();
-    //drawText();
-
-    // call the next frame
-    requestAnimationFrame(loop);
-}
-
-function gameTime(time_now){
-    // initialise init_time (singleton)
-    if (!init_time) {
-        init_time = time_now;
-    }
-
-    // calculate the time difference
-    time_delta = (time_now - init_time) / 1000; // seconds
-    init_time = time_now;
+    requestAnimationFrame(gameLoop);
 }
 
 function setDimensions() {
@@ -113,7 +82,7 @@ function newGame(){
     arrows = [];
     board = [];
     setDimensions();
-    requestAnimationFrame(loop);
+    requestAnimationFrame(gameLoop);
 }
 
 function changeTurn(){
