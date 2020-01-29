@@ -1,7 +1,7 @@
 var start_btn = document.getElementById("start_btn");
-var startMenu_div = document.getElementById("startMenu");
+var startMenu_div = document.getElementsByClassName("startMenu")[0];
 var game_div = document.getElementsByClassName("game")[0];
-var endGameMenu_div = document.getElementById("endGameMenu");
+var endMenu_div = document.getElementsByClassName("endMenu")[0];
 
 window.addEventListener("resize", setDimensions);
 
@@ -9,14 +9,12 @@ window.onload = function(event) {
     startMenu_div.style.display = "flex";
     settings.style.display = "none";
     game_div.style.display = "none";
-    endGameMenu_div.display = "none";
 }
 
 start_btn.onclick = function() {
     game_div.style.display = "block";
     settings.style.display = "none";
     startMenu_div.style.display = "none";
-    endGameMenu_div.display = "none";
     newGame();
 }
 
@@ -36,6 +34,8 @@ var TURN = "PLAYER";
 var PLAY_FIRST = "PLAYER";
 var DEPTH = 4;
 
+var GAME_OVER = false;
+
 //piece animation
 var endPercent = 101;
 var curPerc = 0;
@@ -51,11 +51,12 @@ function loop(time_now) {
         if(PLAY_FIRST != "PLAYER"){
             changeTurn();
         }
+        drawTurn();
     }
 
     drawBoard();
     drawHeader();
-    drawTurn();
+
 
     // update
     //goComputer(time_delta);
@@ -125,4 +126,5 @@ function changeTurn(){
     else{
         TURN = "PLAYER";
     }
+    drawTurn();
 }
