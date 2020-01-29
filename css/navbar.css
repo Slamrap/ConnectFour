@@ -2,8 +2,6 @@ a {
   color: var(--font_color3);
 }
 
-/* header */
-
 .header {
   background-color: #fff;
   box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
@@ -24,7 +22,6 @@ a {
 .header li a {
   display: block;
   padding: 20px 20px;
-  
   text-decoration: none;
 }
 
@@ -42,7 +39,6 @@ a {
 }
 
 /* menu */
-
 .header .menu {
   clear: both;
   max-height: 0;
@@ -50,7 +46,6 @@ a {
 }
 
 /* menu icon */
-
 .header .menu-icon {
   cursor: pointer;
   display: block;
@@ -89,7 +84,6 @@ a {
 }
 
 /* menu btn */
-
 .header .menu-btn {
   display: none;
 }
@@ -116,7 +110,6 @@ a {
 }
 
 /* 48em = 768px */
-
 @media (min-width: 48em) {
   .header li {
     float: left;
