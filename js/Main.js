@@ -11,6 +11,11 @@ window.onload = function(event) {
     startMenu_div.style.display = "flex";
     settings.style.display = "none";
     game_div.style.display = "none";
+    defaultSettings();
+    console.log(GAME_MODE);
+    console.log(DEPTH);
+    console.log(PLAY_FIRST);
+    console.log(ALGORITHM);
 }
 
 start_btn.onclick = function() {
@@ -38,10 +43,15 @@ var board = [];
 
 // game variables
 var TURN = "PLAYER";
-var PLAY_FIRST = "PLAYER";
-var DEPTH = 4;
-
 var GAME_OVER = false;
+
+// Settings
+var GAME_MODE = "";
+var DEPTH = 0;
+var PLAY_FIRST = "";
+var ALGORITHM = "";
+
+
 
 //piece animation
 var endPercent = 101;
