@@ -64,7 +64,7 @@
 
 
 var initialNode;
-let nTotalNodes = 0;
+
 
 function alpha_beta(node, depth, player, alpha, beta){
     initialNode = node;
