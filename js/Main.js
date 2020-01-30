@@ -8,6 +8,7 @@ var restart_btn = document.getElementById("restart_btn");
 var height, width, margin;
 var arrows = [];
 var board = [];
+var resize = false;
 
 // game variables
 var TURN = "";
@@ -56,12 +57,17 @@ function gameLoop(){
         }
         drawTurn();
     }
+    else if(board.length != 0 && resize){
+        updateBoardDimentions();
+        resize = false;
+    }
     drawBoard();
     drawHeader();
     requestAnimationFrame(gameLoop);
 }
 
 function setDimensions() {
+    resize = true;
     height = window.innerHeight * 0.75;
     width = window.innerWidth;
     canvas.height = height;
@@ -75,12 +81,17 @@ function setDimensions() {
     // body background color
     document.body.style.backgroundColor = COLOR_BACKGROUND;
     if(board.length != 0)
-        updateBoardDimentions();
+        updateDimentions();
 }
 
 function newGame(){
     arrows = [];
     board = [];
+    setDimensions();
+    requestAnimationFrame(gameLoop);
+}
+
+function updateDimentions(){
     setDimensions();
     requestAnimationFrame(gameLoop);
 }

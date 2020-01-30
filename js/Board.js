@@ -44,6 +44,8 @@ function updateBoardDimentions(){
         let new_y = marginY;
         arrows[i].x = new_x;
         arrows[i].y = new_y;
+        arrows[i].width = cell_width;
+        arrows[i].height = cell_width;
     }
 
     marginY = marginY + arrows[0].height;
@@ -54,6 +56,8 @@ function updateBoardDimentions(){
             let new_y = marginY + i * cell_width;
             board[i][j].x = new_x;
             board[i][j].y = new_y;
+            board[i][j].width = cell_width;
+            board[i][j].height = cell_width;
         }
     }
 }
